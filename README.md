@@ -1,1 +1,7 @@
-# between_technical_test
+# Consideraciones y mejoras
+1. En el repositorio no aparece porque he hecho los cambios desde un fork a uno de mis repositorios, pero la manera de proceder a la hora de subir el código ha sido mediante ramas en git donde he implementado primero la parte de la api con sus tests, así como otra para la parte del servicio de CSV. Una vez implementadas y testeadas, se ha integrado en la rama principal.
+2. Se han añadido tests unitarios, pese a que no venga explicitamente indicado en las tareas de la prueba.
+3. Entre las mejoras propuestas cabe destacar:
+    * La creación de un modelo de TODO's usando Django para almancenarlas directamente en un base de datos (PostgresSQL) de manera que asi evitamos almacenar la informacion en ficheros CSV.
+    * Puesto que en la información de los TODO's aparece el id del usuario sería interesante crear un modelo para almacenarlos y poder traer la información de los TODOs filtrada por el id de usuario. Podriamos utilizar Djando Rest Framework para ello.
+    * Crear un contenedor de Docker para el proyecto con el fin de obtener todos lo beneficios de trabajar con contenedores como puede ser en este caso la instalación de versiones de librerias que no estén sujetas al entorno local donde se estén ejecutando, entre muchas otras relacionadas con la escalabilidad o sus integración con una arquitectura de microservicios, donde tendríamos la parte de las API's por un lado, y la parte del tratamiento de los datos por otra.
