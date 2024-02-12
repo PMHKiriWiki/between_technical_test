@@ -1,8 +1,17 @@
-#!/usr/bin/env python
+import logging
 
-from src.Application.App import App
+from src.Services.ApiService import ApiService
+from src.Services.CsvService import CsvService
 
+API_URL = 'https://jsonplaceholder.typicode.com/todos/'
+STORAGE_FOLDER = 'storage'
 
-app = App()
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
 
-app.api_service().run()
+    api_service = ApiService(api_url=API_URL)
+    csv_service = CsvService(storage_folder=STORAGE_FOLDER)
+
+    todos = api_service.get_todos()
+
+    csv_service.convert_todos_to_csv(todos)
