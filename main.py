@@ -6,6 +6,15 @@ from src.Services.CsvService import CsvService
 API_URL = 'https://jsonplaceholder.typicode.com/todos/'
 STORAGE_FOLDER = 'storage'
 
+
+def convert_todos_to_csv(todos): 
+    if not todos:
+        return
+    
+    for todo in todos:
+         csv_service.convert_to_csv(todo)
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
@@ -14,4 +23,6 @@ if __name__ == "__main__":
 
     todos = api_service.get_todos()
 
-    csv_service.convert_todos_to_csv(todos)
+    convert_todos_to_csv(todos)
+
+           

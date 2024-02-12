@@ -14,5 +14,5 @@ class ApiService:
             todos = response.json()
             return todos
         except requests.exceptions.RequestException as e:
-            logger.error(f"Error retrieving TODOs: {e}")
+            logger.error(f'Error retrieving TODOs: {e}')
             return None
