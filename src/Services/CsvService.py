@@ -28,5 +28,21 @@ class CsvService:
                 writer.writerow(todo)
 
             logger.info(f'CSV file \'{csv_path}\' created successfully.')
+            
+        except FileNotFoundError as file_not_found_error:
+            logger.error(f'Error creating CSV file. File not found error: {file_not_found_error}')
+        except PermissionError as permission_error:
+            logger.error(f'Error creating CSV file. Permission error: {permission_error}')
+        except csv.Error as csv_error:
+            logger.error(f'Error creating CSV file. CSV error: {csv_error}')
         except Exception as e:
             logger.error(f'Error creating CSV file: {e}')
+
+    def run(self, todos):
+        if not todos: 
+            logger.info(f'There is no TODO records to be processed')
+            return
+        
+        for todo in todos:
+            self.convert_to_csv(todo)
+        

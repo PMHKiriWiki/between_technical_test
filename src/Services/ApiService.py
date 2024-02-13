@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import requests
 import logging
 
@@ -16,3 +18,6 @@ class ApiService:
         except requests.exceptions.RequestException as e:
             logger.error(f'Error retrieving TODOs: {e}')
             return None
+
+    def run(self):
+        return self.get_todos()
